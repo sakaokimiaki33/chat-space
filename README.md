@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# usersテーブル
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key:true,unique: true,add_index|
+|username|text|null: false, foreign_key:true,unique: true,add_index|
+|emailaddress|string|null: false,unique: true|
+|password|integer|null: false,unique: true|
 
-* Ruby version
+# messagesテーブル
 
-* System dependencies
+|Column|Type|Options|
+|------|----|-------|
+|message_id|string|null: false,foreign_key:true,unique: true,add_index|
+|text|text|null: false,add_index|
+|image_id|integer|foreign_key:true|
+|group_id|integer|null: false,foreign_key:true,unique: true,add_index|
+|user_id|integer|null: false, foreign_key:true,unique: true,add_index|
+# timestampはデフォルトで生成される
 
-* Configuration
+# groupsテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|groupname|text|null: false,foreign_key:true,add_index|
+|group_id|integer|null: false,foreign_key:true,unique: true,add_index|
 
-* Database initialization
+# imagesテーブル
 
-* How to run the test suite
+|Column|Type|Options|
+|------|----|-------|
+|image_id|string|null: false,foreign_key:true,unique: true,add_index|
+|group_id|integer|null: false,foreign_key:true,unique: true|
+|user_id|integer|null: false, foreign_key:true,unique: true|
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
