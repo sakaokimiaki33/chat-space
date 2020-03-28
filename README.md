@@ -1,4 +1,3 @@
-# README
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -8,8 +7,7 @@
 |password|integer|null: false,unique: true|
 
 ### Association
-- has_many :messages, through: :groups
-- has_many :groups
+- has_many :groups, through: :group
 - has_many :messages
 
 ## messagesテーブル
@@ -23,9 +21,7 @@
 # timestampはデフォルトで生成される
 
 ### Association
-- has_many :users, through: :groups
-- has_many :groups
-- has_many :users
+- has_many :user
 
 ## groupsテーブル
 
@@ -35,14 +31,13 @@
 |group_id|integer|null: false,foreign_key:true,unique: true,add_index|
 
 ### Association
-- has_many :groups
-- has_many :users
+has_many :users, through: :group
 
-## imagesテーブル
+## groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_id|string|null: false,foreign_key:true,unique: true,add_index|
 |group_id|integer|null: false,foreign_key:true,unique: true|
+|menbername|text|null: false, foreign_key:true,unique: true|
 |user_id|integer|null: false, foreign_key:true,unique: true|
 
 ### Association
