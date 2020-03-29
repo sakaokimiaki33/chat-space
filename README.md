@@ -15,8 +15,8 @@
 |------|----|-------|
 |text|text||
 |image|string||
-|group_id|integer|null: false,foreign_key:true|
-|user_id|integer|null: false, foreign_key:true|
+|group|references|null: false,foreign_key:true|
+|user|references|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :user
@@ -36,8 +36,8 @@ has_many :messages
 ## user_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|null: false,foreign_key:true|
-|user_id|integer|null: false, foreign_key:true|
+|group|references|null: false,foreign_key:true|
+|user|references|null: false, foreign_key:true|
 
 ### Association
 - belong_to :user
