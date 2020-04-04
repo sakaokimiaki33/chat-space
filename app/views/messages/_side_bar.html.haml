@@ -1,0 +1,19 @@
+.chat-side
+  .side-header
+    .side-header__top-items
+      %p.side-header__top-items__username
+        sakaokimiaki
+      %ul.side-header__top-items__menu
+        %li.side-header__top-items__menu__group
+        = link_to "#" do
+          = icon('far', 'edit')
+        %li.side-header__top-items__menu__user
+        = link_to "#" do
+          = icon('fas', 'cog')
+  .groups    
+    .groups__group
+      = link_to "#" do
+        .groups__group__group-name
+          masa
+        .groups__group__latest-message
+          まだテキストがありません
