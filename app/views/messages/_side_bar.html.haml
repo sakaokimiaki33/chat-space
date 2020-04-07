@@ -6,17 +6,17 @@
       %ul.side-header__top-items__menu
         %li.side-header__top-items__menu__group
         = link_to new_group_path(current_user) do
-          = icon('far', 'edit')
+          %i.fa.fa-edit
         %li.side-header__top-items__menu__user
         = link_to edit_user_path(current_user) do
-          = icon('fas', 'cog', class: 'icon')
+          %i.fa.fa-cog
   .groups    
     .groups__group
       .groups__group__latest-message
         - current_user.groups.each do |group|
           .group
-            = link_to new_group_path do
+            = link_to group_messages_path(group) do
               .groups__group__group-name
                 = group.name
               .groups__group__latest-message
-                まだテキストがありません
+                = group.show_last_message
