@@ -2,30 +2,24 @@
   .main-header
     .main-header__left-box
       %h2.main-header__left-box__current-group
-        sasagsa
+        = @group.name
         .main-header__left-box__current-group__box
-          .main-header__left-box__member-list
+          %ul.main-header__left-box__member-list
             Member:
-          .main-header__left-box__member-list__member
-            sakaokimiaki
+            - @group.users.each do |user|
+              %li.main-header__left-box__member-list__member
+                = user.name 
+            
     .main-header__edit-btn 
-      = link_to "#" do
+      = link_to edit_group_path(current_user) do
         Edit
   .messages
-    .messages__message
-      .messages__message__upper-info
-        .messages__message__upper-info__talker
-          sakao
-        .messages__message__upper-info__date
-          2020/04/04(Wed)20:00:00
-      .messages__message__text
-        konnnitiwa
-
+    = render @messages
   .form
-    %form.new_message
+    = form_for [@group, @message] do |f|
       .input-box
-        %input.input-box__text{type:"text",placeholder:"type a message"}
-        %label.input-box__image
-          = icon("fas","image")
-          %input.input-box__image__file{type:"file"}
-      %input.submit-btn{type:"submit"}    
+        = f.text_field :content, class: 'input-box__text', placeholder:'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
