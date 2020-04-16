@@ -1,5 +1,6 @@
 $(function(){
   var reloadMessages = function(){
+    if (document.location.href.match(/\/groups\/\d+\/messages/)){
     var last_message_id = $('.message:last').data("message-id");
     $.ajax({
       url: "api/messages",
@@ -21,9 +22,8 @@ $(function(){
       alert('error');
     });
   };
-  setInterval(reloadMessages, 7000);
-  if (document.location.href.match(/\/groups\/\d+\/messages/)){
   }
+  setInterval(reloadMessages, 7000);
 
   
   function buildHTML(message){
